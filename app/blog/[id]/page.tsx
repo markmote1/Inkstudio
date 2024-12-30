@@ -31,7 +31,7 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { id } = params; // Await params
+  const { id } = params;
 
   try {
     const res = await fetch(`https://inkstudio-backend.vercel.app/${id}`);
@@ -42,28 +42,28 @@ export default async function BlogPage({ params }: BlogPageProps) {
       throw new Error('Post is undefined or null.');
     }
 
-    const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://inkstudio-backend.vercel.app/${id}`;
+    const shareUrl = `https://inkstudio-backend.vercel.app/${id}`;
 
     return (
       <div className="min-h-screen bg-black pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="max-w-3xl mx-auto p-4 bg-gray-900 rounded-lg shadow-md border-gray-800">
-        <div className="mb-4">
-          <h1 className="text-4xl font-bold text-white">{post.title}</h1>
-        </div>
-        <div className="flex flex-col md:flex-row mb-4">
-          <div className="md:w-1/2 mb-4 md:mb-0 md:pr-4">
-            <img
-          src={post.image || '/placeholder-image.png'}
-          alt={post.title}
-          className="w-full h-auto object-cover rounded-t-lg"
-            />
-          </div>
-          <div className="md:w-1/2">
-            <p className="text-lg text-gray-400">{post.content}</p>
-          </div>
-        </div>
-        <ShareButtons shareUrl={shareUrl} /> {/* Use the Client Component */}
+            <div className="mb-4">
+              <h1 className="text-4xl font-bold text-white">{post.title}</h1>
+            </div>
+            <div className="flex flex-col md:flex-row mb-4">
+              <div className="md:w-1/2 mb-4 md:mb-0 md:pr-4">
+                <img
+                  src={post.image || '/placeholder-image.png'}
+                  alt={post.title}
+                  className="w-full h-auto object-cover rounded-t-lg"
+                />
+              </div>
+              <div className="md:w-1/2">
+                <p className="text-lg text-gray-400">{post.content}</p>
+              </div>
+            </div>
+            <ShareButtons shareUrl={shareUrl} /> {/* Use the Client Component */}
           </div>
         </div>
       </div>

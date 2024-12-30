@@ -14,7 +14,7 @@ interface BlogPost {
 // Generate static paths for dynamic routing
 export async function generateStaticParams() {
   try {
-    const res = await fetch('http://localhost:5000/blog/');
+    const res = await fetch('https://inkstudio-backend.vercel.app/');
     if (!res.ok) throw new Error('Failed to fetch blog posts');
     const blogPosts: BlogPost[] = await res.json();
     return blogPosts.map((post) => ({ id: post.id.toString() }));
@@ -34,7 +34,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const { id } = params; // Await params
 
   try {
-    const res = await fetch(`http://localhost:5000/blog/${id}`);
+    const res = await fetch(`https://inkstudio-backend.vercel.app/${id}`);
     if (!res.ok) throw new Error(`Failed to fetch blog post: ${res.status}`);
     const post: BlogPost = await res.json();
 
@@ -42,7 +42,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       throw new Error('Post is undefined or null.');
     }
 
-    const shareUrl = typeof window !== 'undefined' ? window.location.href : `http://localhost:3000/blog/${id}`;
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://inkstudio-backend.vercel.app/${id}`;
 
     return (
       <div className="min-h-screen bg-black pt-20">

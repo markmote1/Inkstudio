@@ -25,7 +25,7 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('http://localhost:5000/blog', { cache: 'no-store' }); // Ensures fresh data
+        const res = await fetch('https://inkstudio-backend.vercel.app/', { cache: 'no-store' }); // Ensures fresh data
         if (!res.ok) throw new Error('Failed to fetch posts');
         const data = await res.json();
         setBlogPosts(data);

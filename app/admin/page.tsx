@@ -19,7 +19,7 @@ export default function AdminPage() {
     useEffect(() => {
         const fetchBlogPosts = async () => {
             try {
-                const res = await fetch('http://localhost:5000/blog');
+                const res = await fetch('https://inkstudio-backend.vercel.app/');
                 const data = await res.json() || [];
                 setBlogPosts(data);
             } catch (error) {
@@ -44,8 +44,8 @@ export default function AdminPage() {
 
         try {
             const url = isEditing
-                ? `http://localhost:5000/blog/${editPostId}`
-                : 'http://localhost:5000/blog';
+                ? `https://inkstudio-backend.vercel.app/${editPostId}`
+                : 'https://inkstudio-backend.vercel.app/';
             const method = isEditing ? 'PUT' : 'POST';
 
             const res = await fetch(url, {
@@ -95,7 +95,7 @@ export default function AdminPage() {
     // Delete blog post
     const handleDelete = async (id: number) => {
         try {
-            const res = await fetch(`http://localhost:5000/blog/${id}`, {
+            const res = await fetch(`https://inkstudio-backend.vercel.app/${id}`, {
                 method: 'DELETE',
             });
 
